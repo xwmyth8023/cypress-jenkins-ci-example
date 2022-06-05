@@ -1,0 +1,19 @@
+{
+  "name": "cypress-jenkins-ci-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xwmyth8023/cypress-jenkins-ci-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xwmyth8023/cypress-jenkins-ci-example/issues"
+  },
+  "homepage": "https://github.com/xwmyth8023/cypress-jenkins-ci-example#readme"
+}
