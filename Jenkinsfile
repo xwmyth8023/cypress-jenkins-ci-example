@@ -1,5 +1,9 @@
 pipeline {
-  agent none
+  agent {
+    docker {
+      image 'cypress/base:10'
+    }
+  }
 
   stages {
     // first stage installs node dependencies and Cypress binary
