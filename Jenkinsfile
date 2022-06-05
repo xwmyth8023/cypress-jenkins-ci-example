@@ -9,8 +9,9 @@ pipeline {
   stages {
     // first stage installs node dependencies and Cypress binary
     stage('build') {
-      container('docker'){
-        steps {
+      steps {
+        container('docker'){
+        
           // there a few default environment variables on Jenkins
           // on local Jenkins machine (assuming port 8080) see
           // http://localhost:8080/pipeline-syntax/globals#env
@@ -29,8 +30,8 @@ pipeline {
         // start several test jobs in parallel, and they all
         // will use Cypress Dashboard to load balance any found spec files
         stage('tester A') {
-          container('docker'){
-            steps {
+          steps {
+            container('docker'){
               echo "Running build ${env.BUILD_ID}"
               sh "npm test"
             }
@@ -39,8 +40,9 @@ pipeline {
 
         // second tester runs the same command
         stage('tester B') {
-          container('docker'){
-            steps {
+          steps {
+            container('docker'){
+            
               echo "Running build ${env.BUILD_ID}"
               sh "npm test"
             }
@@ -54,7 +56,6 @@ pipeline {
     // shutdown the server running in the background
     always {
       echo 'Stopping local server'
-      sh 'pkill -f http-server'
     }
   }
 }
