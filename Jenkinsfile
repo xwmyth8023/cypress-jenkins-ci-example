@@ -14,6 +14,7 @@ pipeline {
         // on local Jenkins machine (assuming port 8080) see
         // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+        sh 'sudo chown -R 989:985 "/.npm"'
         sh 'npm ci'
         sh 'npm run cy:verify'
       }
