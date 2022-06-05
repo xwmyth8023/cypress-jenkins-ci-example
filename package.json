@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/xwmyth8023/cypress-jenkins-ci-example/issues"
   },
-  "homepage": "https://github.com/xwmyth8023/cypress-jenkins-ci-example#readme"
+  "homepage": "https://github.com/xwmyth8023/cypress-jenkins-ci-example#readme",
+  "devDependencies": {
+    "cypress": "^10.0.2"
+  }
 }
