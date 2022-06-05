@@ -11,7 +11,7 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh "export CYPRESS_CACHE_FOLDER=cache/Cypress"
 //         sh 'chown -R $(whoami) "~/.npm"'
-        sh 'npm cache clean --force'
+        // sh 'npm cache clean --force'
         sh 'npm ci'
       }
     }
