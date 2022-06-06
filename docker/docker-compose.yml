@@ -1,0 +1,11 @@
+pluginDev:
+  image: cypress-jenkins-ci-example
+  command: -t
+  volumes:
+    - ../mochawesome-report:/opt/app/current/mochawesome-report
+    - ../screenshots:/opt/app/current/screenshots
+pluginJenkins:
+  image: cypress-jenkins-ci-example
+  volumes:
+    - ../mochawesome-report:/opt/app/current/mochawesome-report
+    - ../screenshots:/opt/app/current/screenshots
