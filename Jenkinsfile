@@ -16,7 +16,7 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'node -v'
         // sh 'ls "~/.npm"'
-        sh "mkdir ~/.npm"
+        sh "mkdir '~/.npm'"
         // sh "npm cache clean --force"
         sh 'chown -R 989:985 "/.npm"'
         sh 'npm ci'
