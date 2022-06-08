@@ -3,11 +3,11 @@ pipeline {
     // this image provides everything needed to run Cypress
     docker {
       image 'cypress/base:12'
-      args '--name cypress-example'
+      // args '--name cypress-example'
       args '-u root:root'
-      args '-v npm-cache:/root/.npm'
-      args '-v cypress-cache:/root/.cache'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
+      // args '-v npm-cache:/root/.npm'
+      // args '-v cypress-cache:/root/.cache'
+      // args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
 
