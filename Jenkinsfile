@@ -2,11 +2,21 @@ pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
-      image 'cypress/base:10'
+      image 'cypress/browsers:node16.5.0-chrome97-ff96'
     }
+  }
+  environment {
+    CYPRESS_CACHE_FOLDER="./cache/Cypress"
+    NODE_ENV = "${BRANCH_NAME}"
+    DISPLAY = ":99"
   }
 
   stages {
+    stage('start xvfb') {
+      steps {
+        sh "Xvfb :99 &"
+      }
+    }
     // first stage installs node dependencies and Cypress binary
     stage('build') {
       steps {
@@ -16,16 +26,17 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'npm ci'
         sh 'npm run cy:verify'
+        sh "export CYPRESS_CACHE_FOLDER=cache/Cypress"
       }
     }
 
-    stage('start local server') {
-      steps {
-        // start local server in the background
-        // we will shut it down in "post" command block
-        sh 'nohup npm run start &'
-      }
-    }
+    // stage('start local server') {
+    //   steps {
+    //     // start local server in the background
+    //     // we will shut it down in "post" command block
+    //     sh 'nohup npm run start &'
+    //   }
+    // }
 
     // this stage runs end-to-end tests, and each agent uses the workspace
     // from the previous stage
@@ -68,7 +79,7 @@ pipeline {
     // shutdown the server running in the background
     always {
       echo 'Stopping local server'
-      sh 'pkill -f http-server'
+      // sh 'pkill -f http-server'
     }
   }
 }
