@@ -4,6 +4,7 @@ pipeline {
     docker {
       image 'cypress/base:12'
       args '-u root:root'
+      args '--ipc=host'
     }
   }
 
