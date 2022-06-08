@@ -5,6 +5,7 @@ module.exports = defineConfig({
     video: false,
     videosFolder: this.video ? "cypress/videos" : '',
     screenshotOnRunFailure: false,
+    excludeSpecPattern: '**/e2e/2-advanced-examples/*.cy.js',
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on('before:browser:launch', (browser = {}, launchOptions) => {
